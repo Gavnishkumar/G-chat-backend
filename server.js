@@ -14,7 +14,7 @@ dotenv.config();
 connectDB();
 const imagekit = new ImageKit({
     urlEndpoint: process.env.UrlEndPoint,
-    publicKey: process.env.publicKey,
+    publicKey:process.env.PublicKey,
     privateKey: process.env.PrivateKey
   });
   app.use((req, res, next)=>{
