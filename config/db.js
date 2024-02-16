@@ -5,7 +5,8 @@ const connectDB = async ()=>{
             ,{
             useNewUrlParser: true,
             useUnifiedTopology: true,
-        });
+        }
+        );
         console.log(`mongoose connected:`);
     }catch (error){
         console.log(`Error: ${error}`);
