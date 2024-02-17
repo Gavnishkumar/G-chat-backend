@@ -8,8 +8,12 @@ const ChatRoutes= require('./Route/ChatRoutes')
 const messageRoutes= require('./Route/messageRoutes');
 const path= require('path');
 const ImageKit = require('imagekit');
+const cors= require('cors')
 const app= express();
 app.use(express.json());
+app.use(cors({
+    origin: 'https://g-chat-backend.onrender.com/'
+}));
 dotenv.config();
 connectDB();
 const imagekit = new ImageKit({
@@ -17,12 +21,12 @@ const imagekit = new ImageKit({
     publicKey:process.env.PublicKey,
     privateKey: process.env.PrivateKey
   });
-  app.use((req, res, next)=>{
+  app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", 
-      "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
+});
+
 app.get('/',(req,res)=>{
     res.send("server is running");
 })
