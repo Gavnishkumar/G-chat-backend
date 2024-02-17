@@ -12,8 +12,8 @@ const cors= require('cors')
 const app= express();
 app.use(express.json());
 app.use(cors({
-    origin: 'https://g-chat-backend.onrender.com',
-    credentials:true
+    origin: '*',
+    credentials:false
 }));
 dotenv.config();
 connectDB();
@@ -23,8 +23,9 @@ const imagekit = new ImageKit({
     privateKey: process.env.PrivateKey
   });
   app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://g-chat-client.onrender.com/");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Credentials: true")
     next();
 });
 
